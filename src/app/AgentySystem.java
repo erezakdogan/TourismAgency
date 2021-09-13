@@ -6,7 +6,7 @@ import Model.Hotel;
 import Model.Room;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class AgentySystem {
@@ -19,7 +19,7 @@ public class AgentySystem {
     public void start(Stage stage){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/Anasayfa.fxml"));
-            AnchorPane root = fxmlLoader.load();
+            BorderPane root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
