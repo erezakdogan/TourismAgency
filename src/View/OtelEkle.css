@@ -1,0 +1,41 @@
+.label{
+    -fx-text-fill: #2E3F6B;
+
+}
+.button{
+    -fx-background-color: #0061FF;
+    -fx-text-fill: #fff;
+}
+.button:hover {
+    -fx-box-shadow: #383838;
+    -fx-effect: dropshadow(three-pass-box, #0061FF, 10, 0, 0, 0);;
+    -fx-translate-y : 1.2;
+    
+}
+.pane {
+    -fx-background-color: #fff;
+    -fx-background-radius: 15px;
+
+}
+.text-field{
+    -fx-border-color: #0061FF;
+}
+.check-box {
+    -fx-text-fill : #2E3F6B;
+    
+}.check-box .box {
+    -fx-background-color: #fff;
+
+    
+}
+.date-picker:editable .arrow-button{
+    -fx-background-color: #fff;
+    -fx-border-color: transparent;
+    -fx-background-radius: 2px;
+}   
+.but{
+    -fx-background-image: url("/src/Icons/icons8_exit_50px.png");
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 90%;
+}
