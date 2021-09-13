@@ -10,7 +10,6 @@ import Model.Hotel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 public class SearchMain {

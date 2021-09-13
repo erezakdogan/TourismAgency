@@ -3,14 +3,15 @@ package View;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import Model.Reservations;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import Model.Reservations;
 import app.AgentySystem;
-import javafx.scene.control.Button;
 
 public class ResList {
 

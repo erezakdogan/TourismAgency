@@ -1,19 +1,14 @@
 package View;
 
 import java.io.IOException;
-import java.lang.annotation.Retention;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Helper.Calculator;
-import Model.Pansiyon;
 import Model.Room;
-import javafx.beans.binding.BooleanExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import java.time.LocalDate;
