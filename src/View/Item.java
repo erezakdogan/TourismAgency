@@ -59,4 +59,10 @@ public class Item {
     public void setLabel(int num) {
         personsLabel.setText(num + ". Yetişkin : ");
     }
+    
+    public void clearInputs(){
+        personsId.clear();
+        personsName.clear();
+        personsNationality.getSelectionModel().clearSelection();
+    }
 }

@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Hotel {
     private int id;
@@ -15,11 +17,12 @@ public class Hotel {
     private String phone;
     private int star;
     private boolean carpark, wifi, pool, gym, concierge, spa, roomService;
+    private LocalDate perStart, perEnd;
 
     public Hotel() {
     }
 
-    public Hotel(int id, String name, String adress, String email, String phone, int star, boolean carpark, boolean wifi,
+    public Hotel(int id, String name, String adress, String email, String phone, int star, LocalDate perStart, LocalDate perEnd, boolean carpark, boolean wifi,
             boolean pool, boolean gym, boolean concierge, boolean spa, boolean roomService) {
         this.id = id;
         this.name = name;
@@ -27,6 +30,8 @@ public class Hotel {
         this.email = email;
         this.phone = phone;
         this.star = star;
+        this.perStart = perStart;
+        this.perEnd = perEnd;
         this.carpark = carpark;
         this.wifi = wifi;
         this.pool = pool;
@@ -36,9 +41,9 @@ public class Hotel {
         this.roomService = roomService;
     }
 
-    public void addHotel(String name, String adress, String email, String phone, int star, boolean carpark,
+    public void addHotel(String name, String adress, String email, String phone, int star, LocalDate perStart, LocalDate perEnd, boolean carpark,
             boolean wifi, boolean pool, boolean gym, boolean concierge, boolean spa, boolean roomService) {
-        String query = "INSERT INTO public.hotels (name,address,email,phone,star,park,wifi,pool,gym,spa,concierge,roomservice) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO public.hotels (name,address,email,phone,star,park,wifi,pool,gym,spa,concierge,roomservice,per_start, per_end) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = DBConnector.getInstance().prepareStatement(query);
             preparedStatement.setString(1, name);
@@ -53,15 +58,23 @@ public class Hotel {
             preparedStatement.setBoolean(10, spa);
             preparedStatement.setBoolean(11, concierge);
             preparedStatement.setBoolean(12, roomService);
+            preparedStatement.setString(13, perStart.toString());
+            preparedStatement.setString(14, perEnd.toString());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public static ArrayList<Hotel> getHotels() {
+    public static ArrayList<Hotel> getHotels(String add) {
         ArrayList<Hotel> hotelArrayList = new ArrayList<>();
-        String query = "SELECT * FROM hotels";
+        String query = null;
+        if(add!="all"){
+        query = "SELECT * FROM hotels WHERE address = '"+add+"'";
+        }else{
+            query = "SELECT * FROM hotels;";
+
+        }
         Hotel hotel;
         try {
             Statement statement = DBConnector.getInstance().createStatement();
@@ -72,6 +85,8 @@ public class Hotel {
                 String adress = resultSet.getString("address");
                 String email = resultSet.getString("email");
                 String phone = resultSet.getString("phone");
+                LocalDate perStart = LocalDate.parse(resultSet.getString("per_start"),DateTimeFormatter.ISO_LOCAL_DATE);
+                LocalDate perEnd = LocalDate.parse(resultSet.getString("per_end"),DateTimeFormatter.ISO_LOCAL_DATE);
                 int star = resultSet.getInt("star");
                 boolean carpark = resultSet.getBoolean("park");
                 boolean wifi = resultSet.getBoolean("wifi");
@@ -80,7 +95,7 @@ public class Hotel {
                 boolean concierge = resultSet.getBoolean("concierge");
                 boolean spa = resultSet.getBoolean("spa");
                 boolean roomService = resultSet.getBoolean("roomservice");
-                hotel = new Hotel(id, name, adress, email, phone, star, carpark, wifi, pool, gym, concierge, spa,
+                hotel = new Hotel(id, name, adress, email, phone, star, perStart, perEnd, carpark, wifi, pool, gym, concierge, spa,
                         roomService);
                 hotelArrayList.add(hotel);
             }
@@ -90,6 +105,7 @@ public class Hotel {
 
         return hotelArrayList;
     }
+
 
     public int getId(){
         return id;
@@ -193,7 +209,22 @@ public class Hotel {
         this.roomService = roomService;
     }
 
-    
+    public LocalDate getPerStart() {
+        return this.perStart;
+    }
+
+    public void setPerStart(LocalDate perStart) {
+        this.perStart = perStart;
+    }
+
+    public LocalDate getPerEnd() {
+        return this.perEnd;
+    }
+
+    public void setPerEnd(LocalDate perEnd) {
+        this.perEnd = perEnd;
+    }
+
 
     @Override
     public String toString() {

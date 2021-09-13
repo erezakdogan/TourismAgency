@@ -2,9 +2,9 @@ package View;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -44,41 +44,42 @@ public class Anasayfa {
     private URL location;
 
     @FXML
-    void initialize() {     
+    void initialize() {
         customerCount.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         initButtons();
     }
 
     private void initButtons() {
         hotelSearchButton.setOnAction(arg0 -> {
-            
-            Stage stage1 = (Stage) hotelAddButton.getScene().getWindow();
-            stage1.close();
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SearchMain.fxml"));
-                ScrollPane root = fxmlLoader.load();
-                SearchMain searchMain = (SearchMain) fxmlLoader.getController();
-                searchMain.loadHotels(cityField.getText(), dateStart.getValue(), dateEnd.getValue(),
-                        customerCount.getSelectionModel().getSelectedItem());
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (cityField.getText().length() == 0 || dateStart.getValue() == null || dateEnd.getValue() == null
+                    || customerCount.getSelectionModel().getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Boşlukları Doldurunuz", "Eksik Bilgi", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Stage stage1 = (Stage) hotelAddButton.getScene().getWindow();
+                stage1.close();
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/SearchMain.fxml"));
+                    ScrollPane root = fxmlLoader.load();
+                    SearchMain searchMain = (SearchMain) fxmlLoader.getController();
+                    searchMain.loadHotels(cityField.getText(), dateStart.getValue(), dateEnd.getValue(),
+                            customerCount.getSelectionModel().getSelectedItem());
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
         });
 
-        listReservations.setOnAction(arg2->{
+        listReservations.setOnAction(arg2 -> {
             Stage stage2 = (Stage) listReservations.getScene().getWindow();
             stage2.close();
             try {
                 FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("ResList.fxml"));
                 AnchorPane root2 = fxmlLoader2.load();
-                // SearchMain searchMain = (SearchMain) fxmlLoader.getController();
-                // searchMain.loadHotels(cityField.getText(), dateStart.getValue(), dateEnd.getValue(),
-                //         customerCount.getSelectionModel().getSelectedItem());
                 Scene scene = new Scene(root2);
                 Stage stage = new Stage();
                 stage.setScene(scene);

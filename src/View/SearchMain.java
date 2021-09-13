@@ -29,7 +29,7 @@ public class SearchMain {
     }
 
     public void loadHotels(String cityName,LocalDate startDate, LocalDate endDate,int countPerson) {
-        ArrayList<Hotel> hotels = Hotel.getHotels();
+        ArrayList<Hotel> hotels = Hotel.getHotels(cityName);
         for (int i = 0; i < hotels.size(); i++) {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/OtelAra.fxml"));

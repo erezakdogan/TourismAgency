@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import Model.Reservations;
 import Model.Room;
 import javafx.fxml.FXML;
@@ -12,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import app.AgentySystem;
 import javafx.scene.layout.HBox;
 import java.time.LocalDate;
 
@@ -65,7 +69,7 @@ public class Reservation {
                 HBox box = fxmlLoader.load();
                 Item item = fxmlLoader.getController();
                 itemList.add(item);
-                itemList.get(i).setLabel(i+1);
+                itemList.get(i).setLabel(i + 1);
                 vboxPersons.getChildren().add(box);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -75,14 +79,51 @@ public class Reservation {
             String name = "";
             String nationality = "";
             String pasportno = "";
+            boolean anyEmpty = false;
             for (int j = 0; j < itemList.size(); j++) {
                 name += itemList.get(j).getName() + ",";
                 nationality += itemList.get(j).getNationality() + ",";
                 pasportno += itemList.get(j).getId() + ",";
+                if (itemList.get(j).getName().length() == 0 || itemList.get(j).getNationality() == null
+                        || itemList.get(j).getId().length() == 0) {
+                    anyEmpty = true;
+                }
             }
-            Reservations.addReservation(id, Room.getHotelId(id), countPerson, price, name, nationality, pasportno,
-                    sDate, eDate,nameReservation.getText(), noteReservation.getText(), phoneReservation.getText(),mailReservation.getText());
+            if (!anyEmpty && nameReservation.getText().length() != 0 && mailReservation.getText().length() != 0
+                    && phoneReservation.getText().length() != 0) {
+                Reservations.addReservation(id, Room.getHotelId(id), countPerson, price, name, nationality, pasportno,
+                        sDate, eDate, nameReservation.getText(), noteReservation.getText(), phoneReservation.getText(),
+                        mailReservation.getText());
+                JOptionPane.showMessageDialog(null, "İşlem Başarılı", "Rezervasyon Eklendi",
+                        JOptionPane.INFORMATION_MESSAGE);
+                clearInputs();
+                itemClear(itemList);
+                closeSearch();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Boşlukları Doldurunuz", "Eksik Bilgi", JOptionPane.ERROR_MESSAGE);
+            }
         });
+    }
+
+    private void closeSearch() {
+        Stage stage = (Stage) applyButton.getScene().getWindow();
+        stage.close();
+        AgentySystem agentySystem = new AgentySystem();
+        agentySystem.start(new Stage());
+    }
+
+    private void clearInputs() {
+        nameReservation.clear();
+        mailReservation.clear();
+        phoneReservation.clear();
+        noteReservation.clear();
+    }
+
+    private void itemClear(ArrayList<Item> itemList) {
+        for (int j = 0; j < itemList.size(); j++) {
+            itemList.get(j).clearInputs();
+        }
     }
 
 }

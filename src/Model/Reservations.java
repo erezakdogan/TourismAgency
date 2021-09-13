@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import Helper.DBConnector;
 
 public class Reservations {
-    int id, roomId, hotelId, personCount, price;
-    String names, nationality, pasportNo;
+    int id, roomId,  personCount, price;
+    String names, nationality, hotelId, pasportNo;
     LocalDate sDate, eDate;
     String contactName,contactNote,contactPhone,contactMail;
 
-    public Reservations(int id, int roomId, int hotelId, int personCount, int price, String names, String nationality,
+    public Reservations(int id, int roomId, String hotelId, int personCount, int price, String names, String nationality,
             String pasportNo, LocalDate sDate, LocalDate eDate, String contactName, String contactNote, String contactPhone, String contactMail) {
         this.id = id;
         this.roomId = roomId;
@@ -69,11 +69,9 @@ public class Reservations {
         ResultSet resultSet = statement.executeQuery(query);
         while(resultSet.next()){
             int id1 = resultSet.getInt("id");       
-
             int roomId1 = resultSet.getInt("room_id");
             int hotelId1 = resultSet.getInt("hotel_id");
             int personCount1 = resultSet.getInt("person_count");
-
             String names1 = resultSet.getString("names");
             String nationality1 = resultSet.getString("nationality");
             String pasportNo1 = resultSet.getString("pasaportno");
@@ -84,7 +82,13 @@ public class Reservations {
             String contactNote1 = resultSet.getString("contact_note");
             String contactPhone1 = resultSet.getString("contact_phone");
             String contactMail1 = resultSet.getString("contact_mail");
-            reservations = new Reservations(id1, roomId1, hotelId1, personCount1, price1, names1, nationality1, pasportNo1, sDate1, eDate1, contactName1, contactNote1, contactPhone1, contactMail1);
+            String hotelName = null;
+            for(Hotel h: Hotel.getHotels("all")){
+                if(h.getId()==hotelId1){
+                    hotelName=h.getName();
+                }
+            }
+            reservations = new Reservations(id1, roomId1, hotelName, personCount1, price1, names1, nationality1, pasportNo1, sDate1, eDate1, contactName1, contactNote1, contactPhone1, contactMail1);
             System.out.println(price1);
             reservationsList.add(reservations);
 
@@ -112,11 +116,11 @@ public class Reservations {
         this.roomId = roomId;
     }
 
-    public int getHotelId() {
+    public String getHotelId() {
         return this.hotelId;
     }
 
-    public void setHotelId(int hotelId) {
+    public void setHotelId(String hotelId) {
         this.hotelId = hotelId;
     }
 

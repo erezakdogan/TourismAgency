@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import app.AgentySystem;
+import javafx.scene.control.DatePicker;
 
 import Model.Hotel;
 import Model.Pansiyon;
 import Model.Room;
-import javafx.fxml.FXML; 
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Button;
 
-
 public class OtelEkle {
-    
+
     @FXML
     private Button exitButton;
 
@@ -92,6 +92,12 @@ public class OtelEkle {
     private Button hotelAdd;
 
     @FXML
+    private DatePicker perStart;
+
+    @FXML
+    private DatePicker perEnd;
+
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -102,13 +108,12 @@ public class OtelEkle {
 
     @FXML
     void initialize() {
-        exitButton.setOnAction(arg0->{
+        exitButton.setOnAction(arg0 -> {
             Stage stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
             AgentySystem agentySystem = new AgentySystem();
             agentySystem.start(new Stage());
         });
-        System.out.println("inited");
         addHotel();
         comboPansiyon.getItems().addAll("ULTRA", "EVERYTHING", "BREAKFAST", "FULL", "HALF", "BED", "NO_ALCOHOL");
         comboStar.getItems().addAll(1, 2, 3, 4, 5);
@@ -124,9 +129,10 @@ public class OtelEkle {
                 JOptionPane.showMessageDialog(null, "Boşlukları doldurunuz", "Eksik Bilgi", JOptionPane.ERROR_MESSAGE);
             } else {
                 hotel.addHotel(oName.getText(), oAdress.getText(), oEmail.getText(), oPhone.getText(),
-                        comboStar.getSelectionModel().getSelectedItem(), hasOto.isSelected(), hasWifi.isSelected(),
-                        hasPool.isSelected(), hasGym.isSelected(), hasMermaid.isSelected(), hasSpa.isSelected(),
-                        hasRoomService.isSelected());
+                        comboStar.getSelectionModel().getSelectedItem(), perStart.getValue(), perEnd.getValue(),
+                        hasOto.isSelected(), hasWifi.isSelected(), hasPool.isSelected(), hasGym.isSelected(),
+                        hasMermaid.isSelected(), hasSpa.isSelected(), hasRoomService.isSelected());
+                JOptionPane.showMessageDialog(null, "İşlem Başarılı", "Otel Ekle", JOptionPane.INFORMATION_MESSAGE);
 
             }
             Room.addRooms(oName.getText(), rArrayList);
@@ -142,11 +148,12 @@ public class OtelEkle {
                     || comboPansiyon.getSelectionModel().getSelectedItem() == null) {
                 JOptionPane.showMessageDialog(null, "Boşlukları doldurunuz", "Eksik Bilgi", JOptionPane.ERROR_MESSAGE);
             } else {
-                room = new Room(0,Integer.parseInt(roomBed.getText()), Integer.parseInt(RoomMeter.getText()),
+                room = new Room(0, Integer.parseInt(roomBed.getText()), Integer.parseInt(RoomMeter.getText()),
                         roomSafe.isSelected(), roomProjection.isSelected(), roomTelevision.isSelected(),
                         roomBar.isSelected(), roomConsole.isSelected(),
                         Pansiyon.valueOf(comboPansiyon.getSelectionModel().getSelectedItem()),
                         Integer.parseInt(RoomCount.getText()));
+                JOptionPane.showMessageDialog(null, "İşlem Başarılı", "Oda Ekle", JOptionPane.INFORMATION_MESSAGE);
                 rArrayList.add(room);
             }
             clearRoomIO();
@@ -160,6 +167,8 @@ public class OtelEkle {
         oEmail.clear();
         oPhone.clear();
         comboStar.getSelectionModel().clearSelection();
+        perStart.setValue(null);
+        perEnd.setValue(null);
         hasOto.setSelected(false);
         hasGym.setSelected(false);
         hasWifi.setSelected(false);

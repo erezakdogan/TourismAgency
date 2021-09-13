@@ -1,7 +1,7 @@
 package Helper;
 
 import java.time.LocalDate;
-
+import java.time.temporal.ChronoUnit;
 import Model.Pansiyon;
 import Model.Room;
 
@@ -39,9 +39,12 @@ public class Calculator {
         }
         
         if(inPeriod){
-            finalPrice = (roomBaseBrice*roomClassChange*1.25*(sDate.until(eDate).getDays()))*commission;
+            finalPrice = (roomBaseBrice*roomClassChange*1.25*(ChronoUnit.DAYS.between(sDate, eDate)))*commission;
+            System.out.println((ChronoUnit.DAYS.between(sDate, eDate)));
         }else{
-            finalPrice = (roomBaseBrice*roomClassChange*(sDate.until(eDate).getDays()))*commission;
+            finalPrice = (roomBaseBrice*roomClassChange*(ChronoUnit.DAYS.between(sDate, eDate)))*commission;
+            System.out.println((ChronoUnit.DAYS.between(sDate, eDate)));
+
         }
         Integer price = (int) finalPrice;
         return price;

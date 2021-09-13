@@ -119,12 +119,9 @@ public class OtelAra {
     }
 
     public void setHotel(Hotel hotel,LocalDate sDate,LocalDate eDate, int countPerson) {
-         roomsAdd(true,hotel.getId(), sDate, eDate,countPerson);
-        // if(sDate.isBefore(eDate)){
-           
-        // }else{
-        //     roomsAdd(false,hotel.getId(), sDate, eDate,countPerson);
-        // }
+        boolean inPeriod = sDate.isAfter(hotel.getPerStart())&& eDate.isBefore(hotel.getPerEnd());
+         roomsAdd(inPeriod,hotel.getId(), sDate, eDate,countPerson);
+        
         
         cityText.setText(hotel.getAdress());
         regionText.setText(hotel.getAdress());
