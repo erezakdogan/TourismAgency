@@ -1,0 +1,14 @@
+.pAnchor {
+-fx-display:false;
+-fx-background-color: #4999DF;
+}
+.button{
+
+-fx-background-color: #FFF;
+-fx-transition-duration : 0.4s;
+}
+
+.button:hover{
+-fx-background-color: #4999DF;
+-fx-text: "Hover >>";
+}

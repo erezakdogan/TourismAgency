@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="880.0" style="-fx-background-color: #2A3950;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OtelEkle">
+   <children>
+      <Pane layoutX="26.0" layoutY="29.0" prefHeight="356.0" prefWidth="578.0" style="-fx-background-color: #495057; -fx-background-radius: 15;">
+         <children>
+            <TextField fx:id="oName" layoutX="32.0" layoutY="40.0" promptText="Adı" style="-fx-background-color: #fff;" />
+            <TextField fx:id="oAdress" layoutX="384.0" layoutY="40.0" promptText="Adres" style="-fx-background-color: #fff;" />
+            <TextField fx:id="oEmail" layoutX="32.0" layoutY="106.0" promptText="Email" style="-fx-background-color: #fff;" />
+            <TextField fx:id="oPhone" layoutX="384.0" layoutY="106.0" promptText="Telefon" style="-fx-background-color: #fff;" />
+            <ComboBox fx:id="comboStar" layoutX="383.0" layoutY="141.0" prefWidth="150.0" promptText="Yıldız Sayısı" style="-fx-background-color: #fff; -fx-background-radius: 15;" />
+            <VBox layoutX="31.0" layoutY="141.0" prefWidth="150.0">
+               <children>
+                  <CheckBox fx:id="hasOto" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Otopark" />
+                  <CheckBox fx:id="hasSpa" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Spa" />
+                  <CheckBox fx:id="hasGym" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Spor Salonu" />
+                  <CheckBox fx:id="hasWifi" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Wifi" />
+                  <CheckBox fx:id="hasMermaid" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Hizmetçi" />
+                  <CheckBox fx:id="hasPool" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Havuz" />
+                  <CheckBox fx:id="hasRoomService" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Oda Servisi" />
+               </children>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="631.0" layoutY="26.0" prefHeight="356.0" prefWidth="234.0" style="-fx-background-color: #9E3F62; -fx-background-radius: 15px;">
+         <children>
+            <Label layoutX="41.0" layoutY="14.0" text="Oda " textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="roomBed" layoutX="42.0" layoutY="34.0" promptText="Yatak Sayısı" style="-fx-background-color: #fff;" />
+            <TextField fx:id="RoomMeter" layoutX="43.0" layoutY="69.0" promptText="Metrekare" style="-fx-background-color: #fff;" />
+            <TextField fx:id="RoomCount" layoutX="43.0" layoutY="103.0" promptText="Oda Sayısı" style="-fx-background-color: #fff;" />
+            <ComboBox fx:id="comboPansiyon" layoutX="42.0" layoutY="136.0" prefWidth="150.0" promptText="Pansiyon Tipi" style="-fx-background-radius: 15; -fx-background-color: #fff;" />
+            <VBox layoutX="43.0" layoutY="178.0">
+               <children>
+                  <CheckBox fx:id="roomConsole" mnemonicParsing="false" prefHeight="25.0" style="-fx-text-fill: #fff;" text="Oyun Konsolu" />
+                  <CheckBox fx:id="roomSafe" mnemonicParsing="false" prefHeight="25.0" style="-fx-text-fill: #fff;" text="Kasa" />
+                  <CheckBox fx:id="roomProjection" mnemonicParsing="false" prefHeight="25.0" style="-fx-text-fill: #fff;" text="Projeksiyon" />
+                  <CheckBox fx:id="roomTelevision" mnemonicParsing="false" prefHeight="25.0" style="-fx-text-fill: #fff;" text="Televiziyon" />
+                  <CheckBox fx:id="roomBar" mnemonicParsing="false" prefHeight="25.0" style="-fx-text-fill: #fff;" text="Mini Bar" />
+               </children>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </VBox>
+            <Button fx:id="roomAdd" layoutX="41.0" layoutY="316.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 15; -fx-background-color: #fff;" text="Oda Ekle" />
+         </children></Pane>
+      <Button fx:id="hotelAdd" layoutX="673.0" layoutY="420.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" style="-fx-background-radius: 15; -fx-background-color: #fff;" text="Otel Ekle" />
+      <Label layoutX="61.0" layoutY="1.0" prefHeight="26.0" prefWidth="83.0" text="Otel Ekle" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="exitButton" layoutX="5.0" layoutY="6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" style="-fx-background-radius: 15; -fx-background-color: #fff;" text="&lt;" />
+   </children>
+</AnchorPane>

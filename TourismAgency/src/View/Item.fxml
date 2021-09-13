@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="770.0" style="-fx-background-color: #DBE0E9;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Item">
+   <children>
+      <Label fx:id="personsLabel" prefHeight="18.0" prefWidth="123.0" text="1. Yetişkin">
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="personsName" prefHeight="26.0" prefWidth="200.0" promptText="Ad Soyad" style="-fx-background-color: #fff;">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </TextField>
+      <ComboBox fx:id="personsNationality" prefHeight="26.0" prefWidth="200.0" promptText="Uyruk" style="-fx-background-color: #fff;">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+      </ComboBox>
+      <TextField fx:id="personsId" prefHeight="26.0" prefWidth="200.0" promptText="Kimlik/Pasaport No" style="-fx-background-color: #fff;">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+      </TextField>
+   </children>
+</HBox>
