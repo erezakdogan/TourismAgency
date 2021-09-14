@@ -3,11 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1080.0" styleClass="pane-background" stylesheets="@resList.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ResList">
    <children>
-      <TableView fx:id="reservationsView" layoutX="14.0" layoutY="27.0" prefHeight="400.0" prefWidth="804.0" stylesheets="@resList.css">
+      <TableView fx:id="reservationsView" layoutX="14.0" layoutY="46.0" prefHeight="539.0" prefWidth="804.0" stylesheets="@resList.css">
         <columns>
           <TableColumn fx:id="colid" prefWidth="32.800048828125" text="ID" />
           <TableColumn fx:id="colhotel" prefWidth="70.4000244140625" text="OTEL" />
@@ -28,6 +30,11 @@
             <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="57.5999755859375" text="Tutar" />
         </columns>
       </TableView>
-      <Button fx:id="exitButton" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: #fff; -fx-background-radius: 5;" text="Exit" />
+      <Button fx:id="exitButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" />
+      <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/icons8_exit_50px.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
