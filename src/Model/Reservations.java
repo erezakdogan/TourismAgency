@@ -89,7 +89,6 @@ public class Reservations {
                 }
             }
             reservations = new Reservations(id1, roomId1, hotelName, personCount1, price1, names1, nationality1, pasportNo1, sDate1, eDate1, contactName1, contactNote1, contactPhone1, contactMail1);
-            System.out.println(price1);
             reservationsList.add(reservations);
 
         }

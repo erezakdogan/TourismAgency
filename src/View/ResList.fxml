@@ -31,7 +31,7 @@
         </columns>
       </TableView>
       <Button fx:id="exitButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="26.0" />
-      <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="22.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="20.0" fitWidth="21.0" layoutX="17.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/icons8_exit_50px.png" />
          </image>
